@@ -7,7 +7,7 @@ import (
 type Group struct {
 	ID      uuid.UUID `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
 	Name    string
-	Members []GroupMember
+	Members []GroupMember `gorm:"many2many:group_members;"`
 }
 
 type GroupMember struct {
@@ -17,7 +17,7 @@ type GroupMember struct {
 }
 
 type GroupResponse struct {
-	Name    string        `json:"name"`
+	Name    string                `json:"name"`
 	Members []GroupMemberResponse `json:"members"`
 }
 
