@@ -14,3 +14,10 @@ type CategoryResponse struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
 }
+
+func (c *Category) ToResponse() CategoryResponse {
+	return CategoryResponse{
+		Title:       c.Title,
+		Description: c.Description,
+	}
+}

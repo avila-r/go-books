@@ -20,3 +20,12 @@ type ReviewResponse struct {
 	Comment string    `json:"comment"`
 	Date    time.Time `json:"date"`
 }
+
+func (r *Review) ToResponse() ReviewResponse {
+	return ReviewResponse{
+		Name:    r.Name,
+		Rating:  r.Rating,
+		Comment: r.Comment,
+		Date:    r.Date,
+	}
+}
