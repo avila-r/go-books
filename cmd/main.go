@@ -5,6 +5,7 @@ import (
 	"os"
 
 	_ "github.com/avila-r/books/docs"
+	"github.com/avila-r/books/pkg/routes"
 	"github.com/avila-r/books/test"
 
 	"github.com/gofiber/fiber/v2"
@@ -23,6 +24,7 @@ func main() {
 	app.Get("/docs", swagger.HandlerDefault)
 	app.Get("/", test.ReturnDataCollection)
 	app.Get("/book", test.GetBook)
+	routes.ActivatePublicRouter(app)
 
 	url := os.Getenv("SERVER_URL")
 
