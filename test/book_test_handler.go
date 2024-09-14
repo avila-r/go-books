@@ -6,6 +6,7 @@ import (
 
 	"github.com/avila-r/books/app/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )
 
 func GetBook(c *fiber.Ctx) error {
@@ -34,7 +35,7 @@ func GetBook(c *fiber.Ctx) error {
 		Description: "Lorem Ipsum is simply dummy text...",
 		Image:       "https://encadernacaocapadura.com/wp-content/uploads/2022/05/livro-capa-dura.jpg",
 		PDF:         "https://eppg.fgv.br/sites/default/files/teste.pdf",
-		CompanyID:   "202c0a95-d401-4598-82bc-4901f871d359",
+		CompanyID:   uuid.New(),
 		HasEbook:    true,
 		CreatedAt:   time.Now(),
 		UpdatedAt:   time.Now(),
@@ -74,7 +75,7 @@ func ReturnDataCollection(c *fiber.Ctx) error {
 				Description: "Um excelente livro para todas as idades.",
 				Image:       "https://encadernacaocapadura.com/wp-content/uploads/2022/05/livro-capa-dura.jpg",
 				PDF:         "https://eppg.fgv.br/sites/default/files/teste.pdf",
-				CompanyID:   "202c0a95-d401-4598-82bc-4901f871d359",
+				CompanyID:   uuid.New(),
 				HasEbook:    true,
 				CreatedAt:   time.Now(),
 				UpdatedAt:   time.Now(),
