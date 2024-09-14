@@ -1,14 +1,14 @@
 package models
 
 import (
-    "github.com/google/uuid"
+	"github.com/google/uuid"
 )
 
 type User struct {
 	ID    uuid.UUID `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
 	Name  string
 	Email string
-	Roles []string
+	Roles []string `gorm:"type:json"`
 }
 
 type UserResponse struct {
