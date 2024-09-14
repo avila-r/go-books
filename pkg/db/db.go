@@ -38,6 +38,7 @@ func AutoMigrate(db *gorm.DB) {
 		&models.Category{},
 		&models.Company{},
 		&models.Group{},
+		&models.GroupMember{},
 		&models.Review{},
 		&models.User{},
 	)
