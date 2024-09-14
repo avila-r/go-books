@@ -6,10 +6,20 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func PublicRoutes(app *fiber.App) {
+type PublicRouter struct {
+	app *fiber.App
+}
+
+func ActivatePublicRouter(app *fiber.App) {
+	router := &PublicRouter{app}
+
+	router.bookRoutes()
+}
+
+func (r *PublicRouter) bookRoutes() {
 	book_handler := handlers.NewBookHandler()
 
-	books := app.Get("/api/v1/books")
+	books := r.app.Group("/api/v1/books")
 
-	books.Get("/books", book_handler.GetAllBooks)
+	books.Get("/", book_handler.ListBooks)
 }
