@@ -22,4 +22,5 @@ func (r *PublicRouter) bookRoutes() {
 	books := r.app.Group("/api/v1/books")
 
 	books.Get("/", book_handler.ListBooks)
+	books.Post("/", book_handler.InsertBook)
 }
