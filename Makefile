@@ -6,7 +6,7 @@ database_password = 123
 run:
 	@echo "Running the Go application..."
 	@go run cmd/main.go
-	@echo "Application is running."
+	@echo "Your application is already running or the port is already in use."
 
 db-init:
 	@echo "Initializing the database container $(container_name)..."
