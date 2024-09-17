@@ -1,11 +1,7 @@
 package models
 
-import (
-	"github.com/google/uuid"
-)
-
 type Category struct {
-	ID          uuid.UUID `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
+	ID          int64 `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
 	Title       string
 	Description string
 }
