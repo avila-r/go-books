@@ -16,7 +16,7 @@ type Book struct {
 	Description string
 	Image       *string // nullable
 	PDF         *string // nullable
-	CompanyID   uuid.UUID
+	CompanyID   int64
 	HasEbook    bool
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
@@ -31,21 +31,21 @@ type BookResponse struct {
 	Description string             `json:"description"`
 	Image       string             `json:"image"`
 	PDF         string             `json:"pdf"`
-	CompanyID   uuid.UUID          `json:"company_id"`
+	CompanyID   int64              `json:"company_id"`
 	HasEbook    bool               `json:"has_ebook"`
 	CreatedAt   time.Time          `json:"created_at"`
 	UpdatedAt   time.Time          `json:"updated_at"`
 }
 
 type BookRequest struct {
-	Title       string      `json:"title"`
-	Available   bool        `json:"available"`
-	Categories  []uuid.UUID `json:"categories"`
-	Description string      `json:"description"`
-	Image       string      `json:"image"`
-	PDF         string      `json:"pdf"`
-	CompanyID   uuid.UUID   `json:"company_id"`
-	HasEbook    bool        `json:"has_ebook"`
+	Title       string  `json:"title" validate:"required,min=3,max=100"`        // Title is required, with a minimum of 3 and a maximum of 100 characters
+	Available   bool    `json:"available"`                                      // No specific validation needed for booleans
+	Categories  []int64 `json:"categories" validate:"required,dive,uuid"`       // List of UUIDs is required, each UUID must be valid
+	Description string  `json:"description" validate:"required,min=10,max=500"` // Description is required, with a length between 10 and 500 characters
+	Image       string  `json:"image" validate:"omitempty,url"`                 // Optional field, must be a valid URL if provided
+	PDF         string  `json:"pdf" validate:"omitempty,url"`                   // Optional field, must be a valid URL if provided
+	CompanyID   int64   `json:"company_id" validate:"required,uuid"`            // Required and must be a valid UUID for the company
+	HasEbook    bool    `json:"has_ebook"`                                      // No specific validation needed for booleans
 }
 
 func (b *Book) Response() *BookResponse {
