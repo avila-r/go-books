@@ -1,7 +1,7 @@
 package models
 
 type Company struct {
-	ID          int64 `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
+	ID          int64 `gorm:"primaryKey"`
 	Name        string
 	Description string
 	Image       string
