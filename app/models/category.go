@@ -1,7 +1,7 @@
 package models
 
 type Category struct {
-	ID          int64 `gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
+	ID          int64 `gorm:"primaryKey"`
 	Title       string
 	Description string
 }
