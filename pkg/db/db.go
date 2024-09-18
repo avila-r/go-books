@@ -33,7 +33,7 @@ func GetConnection() *gorm.DB {
 }
 
 func AutoMigrate(db *gorm.DB) {
-	_ = db.AutoMigrate(
+	err := db.AutoMigrate(
 		&models.Book{},
 		&models.Category{},
 		&models.Company{},
@@ -42,4 +42,8 @@ func AutoMigrate(db *gorm.DB) {
 		&models.Review{},
 		&models.User{},
 	)
+
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
 }
