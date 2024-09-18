@@ -102,7 +102,6 @@ func ReturnDataCollection(c *fiber.Ctx) error {
 			{
 				Name:  "João",
 				Email: "jpedro@gmail.com",
-				Roles: []string{"ADMIN"},
 			},
 		},
 	}
